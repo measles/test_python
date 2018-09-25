@@ -80,7 +80,7 @@ def find_unique(line, unique_words, non_unique_words):
     words = []
     word = ''
     for symbol in line:
-        logging.debug("Next symbol in line is {}")
+        logging.debug("Next symbol in line is {}".format(symbol))
         if symbol not in SEPARATORS:
             logging.debug(
                 "This is not a separator add to the current word")

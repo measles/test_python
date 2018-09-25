@@ -32,6 +32,8 @@ def data_input(file_name):
         logging.critical("Unexpected error:", sys.exc_info()[0])
         exit(2)
 
+    for ind, val in enumerate(data):
+        data[ind] = val.strip()
     return data
 
 def results_output(unique_words, match_re):
