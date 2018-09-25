@@ -1,10 +1,29 @@
+'''Contains functions to parse input data for the test script
+
+Funsctions:
+    process_the_data(data, regular_expression)
+    look_for_re(line, regular_expression)
+    find_unique(line, unique_words, non_unique_words)
+'''
+
 import re
 import logging
 
-# Symbols which can separate in line one word from anotherz
 SEPARATORS = ",.;:?! \n"
+'''Symbols which can separate one word from anothers'''
 
 def process_the_data(data, regular_expression):
+    '''Main function to process the input data. All other functions 
+    are intend to be called from it.
+    
+    Arguments:
+        data(list): list of lines of input data
+        regular_expression(str): string to be used as regular exspression
+    Returns:
+        unique_words(list): list of unique wordds found in input data
+        match_re(list): list of lines that matches give RE
+    '''
+    
     unique_words = []
     non_unique_words = []
     match_re = []
@@ -33,9 +52,31 @@ def process_the_data(data, regular_expression):
     return unique_words, match_re
 
 def look_for_re(line, regular_expression):
+    '''Check if string (or its part) matches the RE given by user.
+    
+    Arguments:
+        line(str): line to check
+        regular_expression(re object): compiled regular expression
+    Returns:
+        None: of nothing was found
+        match object: if there was at least one match
+    '''
     return regular_expression.search(line)
 
 def find_unique(line, unique_words, non_unique_words):
+    '''Find unique words in given lines. If current word found in 
+    unique_words then it will be moved to non_unique_words.
+
+    Arguments:
+        line(str): line to be processed
+        unique_words(list): list of unique words found before
+        non_unique_words(list): list of words that is definitely
+        not unique
+    Returns:
+        unique_words(list): updated state of unique words list
+        non_unique_words(list): updated state of non unique list
+    '''
+    
     words = []
     word = ''
     for symbol in line:

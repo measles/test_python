@@ -39,7 +39,8 @@ if __name__ == "__main__":
     else:
         log_level = getattr(logging, log_level.upper(), None)
         if not isinstance(log_level, int):
-            raise ValueError('Invalid log level: {}'.format(options.log_level))
+            raise ValueError('Invalid log level: {}'
+                             .format(options.log_level))
 
     logging.basicConfig(format='%(asctime)s %(levelname)s:%(message)s',
                         level=log_level,
